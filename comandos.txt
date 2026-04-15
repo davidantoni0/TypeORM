@@ -1,0 +1,4 @@
+npm init -y
+npm i typescript tsx @types/node --save-dev
+npx tsc --init
+npm i typeorm pg reflect-metadata
