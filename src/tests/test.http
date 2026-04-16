@@ -1,0 +1,25 @@
+POST http://localhost:3000/app/users
+Content-Type: application/json
+
+{
+    "firstName": "Zeca",
+    "lastName": "maluco"
+}
+
+###
+
+GET http://localhost:3000/app/users
+
+###
+
+DELETE http://localhost:3000/app/users/6
+
+###
+
+PATCH http://localhost:3000/app/users/11
+Content-Type: application/json
+
+{
+    "firstName": "Zecão",
+    "lastName": "malucão"
+}
