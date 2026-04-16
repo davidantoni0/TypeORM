@@ -23,3 +23,13 @@ Content-Type: application/json
     "firstName": "Zecão",
     "lastName": "malucão"
 }
+
+###
+
+PATCH http://localhost:3000/app/users/11/toggle
+
+###
+
+GET http://localhost:3000/app/users/active
+
+###

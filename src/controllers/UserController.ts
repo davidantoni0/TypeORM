@@ -53,5 +53,32 @@ export class UserController{
         }
     }
 
+    async toggleActive(req: Request, res: Response){
+        try {
+            const id = Number(req.params.id);
+            if (isNaN(id)){
+                return res.status(400).json({message: "id inválido"});
+            }
+            const user = await this.userRepository.findOneBy({id});
+            user.isActive = !user.isActive;
+
+            await this.userRepository.save(user);
+
+            return res.status(200).json(user);
+
+        } catch (error) {
+            return res.status(500).json({error: "Ocorreu um erro inesperado"});
+        }
+    }
+
+    async listActive(req: Request, res: Response){
+        try {
+            const users = await this.userRepository.findBy({ isActive: true });
+            return res.status(200).json(users);
+        } catch (error) {
+            return res.status(500).json({ error: "Ocorreu um erro inesperado" });
+        }
+    }
+
 
 }
