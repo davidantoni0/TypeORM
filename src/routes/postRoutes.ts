@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { PostCotroller } from "../controllers/PostController";
+import { PostController} from "../controllers/PostController";
 
 const router = Router();
-const postController = new PostCotroller();
+const postController = new PostController();
 
-router.post("/", (req,res) => postController.createPost(req,res));
-router.get("/", (req,res) => postController.listPost(req,res));
+router.get("/", postController.listPost);
+router.post("/", postController.createPost);
 
 export const postRoutes = router;

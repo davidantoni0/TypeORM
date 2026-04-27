@@ -4,11 +4,11 @@ import { UserController } from "../controllers/UserController";
 const router = Router();
 const userController = new UserController();
 
-router.post("/", (req,res) => userController.create(req,res));
-router.get("/", (req,res) => userController.list(req,res));
-router.delete("/:id",(req,res) => userController.delete(req,res))
-router.patch("/:id",(req,res) => userController.update(req,res))
-router.patch("/:id/toggle",(req,res) => userController.toggleActive(req,res))
-router.get("/active", (req,res) => userController.listActive(req,res));
+router.post("/", (req,res) => userController.createUser);
+router.get("/", (req,res) => userController.listUser);
+router.delete("/:id",(req,res) => userController.deleteUser)
+router.patch("/:id",(req,res) => userController.updateUser)
+router.patch("/:id/toggle",(req,res) => userController.toggleActiveUser)
+router.get("/active", (req,res) => userController.listActiveUser);
 
 export const userRoutes = router;
