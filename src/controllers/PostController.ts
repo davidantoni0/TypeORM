@@ -42,4 +42,43 @@ export class PostController {
       next(error);
     }
   };
+
+  updatePost = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+    const id = Number(req.params.id);
+    const { title, content } = req.body;
+    if (isNaN(id)) {
+      throw new BadRequestError("O id requisitado é inválido") 
+    }
+    const post = await this.postRepository.findOneBy({ id });
+    if (!post) {
+      throw new NotFoundError("Post não encontrado."); 
+    }
+    post.title = title ?? post.title;
+    post.content = content ?? post.content;
+    const errors = await validate(post);
+    if (errors.length > 0) {
+        const formattedErrors = formatErrors(errors);
+        throw new BadRequestError("Falha de validação", formattedErrors);
+      }
+    await this.postRepository.save(post);
+    return res.json(post);
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
+
+  deletePost = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id = Number(req.params.id);
+      const post = await this.postRepository.findOneBy({ id });
+      if (!post) {
+        throw new NotFoundError("Post não encontrado.");
+      }
+      await this.postRepository.delete(id);
+      return res.status(204).send();
+    } catch (error: unknown) {
+      next(error);
+    }
+  };
 }
