@@ -5,7 +5,7 @@ export class IsBrPhoneContraint implements ValidatorConstraintInterface{
     validate(value: unknown): boolean {
         if (typeof value !== "string") return false;
 
-        const phoneRegex = /^\(?\d{2}\)?\s?9\d{4}-?d{4}$/;
+        const phoneRegex = /^\(?\d{2}\)?\s?9\d{4}-?\d{4}$/;
         return phoneRegex.test(value);        
     }
     defaultMessage(args?: ValidationArguments): string {
