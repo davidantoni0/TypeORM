@@ -1,7 +1,7 @@
 import { ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator";
 
 @ValidatorConstraint ({name: "isBrPhone", async: false})
-export class IsBrPhoneContraint implements ValidatorConstraintInterface{
+export class IsBrPhoneConstraint implements ValidatorConstraintInterface{
     validate(value: unknown): boolean {
         if (typeof value !== "string") return false;
 
