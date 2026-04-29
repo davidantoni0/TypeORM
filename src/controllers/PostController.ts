@@ -71,6 +71,9 @@ export class PostController {
   deletePost = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = Number(req.params.id);
+      if (isNaN(id)) {
+        throw new BadRequestError("O id requisitado é inválido") 
+      }
       const post = await this.postRepository.findOneBy({ id });
       if (!post) {
         throw new NotFoundError("Post não encontrado.");
