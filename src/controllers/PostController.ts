@@ -22,9 +22,10 @@ export class PostController {
 
   createPost = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { title, content, userId } = req.body;
-      if (isNaN(userId)) {
-        throw new BadRequestError("Id do usuário inválido");
+      const { title, content } = req.body;
+      const userId = req.user_id
+      if (userId && isNaN(userId)){
+        throw new BadRequestError("Id do usuário inválido.")
       }
       const user = await this.userRepository.findOneBy({ id: userId });
       if (!user) {
@@ -47,6 +48,14 @@ export class PostController {
     try {
     const id = Number(req.params.id);
     const { title, content } = req.body;
+    const userId = req.user_id
+    if (userId){
+      if(isNaN(userId)){throw new BadRequestError("Id do usuário inválido.")}
+      const user = await this.userRepository.findOneBy({id: userId})
+      if(!user){
+        throw new NotFoundError("Usuário não encontrado.")
+      }
+    }
     if (isNaN(id)) {
       throw new BadRequestError("O id requisitado é inválido") 
     }
