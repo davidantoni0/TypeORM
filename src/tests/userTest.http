@@ -4,7 +4,9 @@ Content-Type: application/json
 {
     "firstName": "Zeca",
     "lastName": "maluco",
-    "email": "zeca.maluco@emaily.com"
+    "email": "zeca.maluco@emaily.com",
+    "phone": "24994142909",
+    "password": "aluno1234"
 }
 
 ###
@@ -23,7 +25,7 @@ Content-Type: application/json
 {
     "firstName": "Zecão",
     "lastName": "malucão",
-    "email": "zeca.maluco@email.com"
+    "email": "zeca.maluco@emailw.com"
 }
 
 ###
@@ -35,3 +37,4 @@ PATCH http://localhost:3000/api/users/11/toggle
 GET http://localhost:3000/api/users/active
 
 ###
+

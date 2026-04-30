@@ -11,8 +11,11 @@ export class UserController {
   createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { firstName, lastName, email, password, phone } = req.body;
-      if (await this.userRepository.findOneBy({ email })) {
-        throw new BadRequestError("O e-mail fornecido já está em uso");
+      if (email) {
+        const existingUser = await this.userRepository.findOneBy({ email });
+        if (existingUser) {
+          throw new BadRequestError("E-mail já está em uso");
+        }
       }
       const hashedPassword = await bcrypt.hash(password, 10)
       const newUser = this.userRepository.create({ firstName, lastName, email, password: hashedPassword, phone });
@@ -53,7 +56,7 @@ export class UserController {
       if (password) {
         user.password = await bcrypt.hash(password, 10);
       }
-      const errors = await validate(user);
+      const errors = await validate(user, {skipMissingProperties: true});
       if (errors.length > 0) {
         const formattedErrors = formatErrors(errors);
         throw new BadRequestError("Falha de validação", formattedErrors);
