@@ -1,7 +1,7 @@
 import { AppDataSource } from "../data-source";
 import type { NextFunction, Request, Response } from "express";
 import { Post } from "../entity/Post";
-import { User } from "../entity/User";
+import { User, UserRole } from "../entity/User";
 import { BadRequestError, NotFoundError } from "../helpers/apiError";
 import { validate } from "class-validator";
 import { formatErrors } from "../helpers/formatErrors";
@@ -55,11 +55,12 @@ export class PostController {
     try {
       const id = Number(req.params.id);
       const userId = req.user_id;
+      const userRole = req.user_role;
       console.log(req)
       if (isNaN(id)) {
         throw new BadRequestError("ID inválido");
       }
-      await this.postService.delete(id, userId!);
+      await this.postService.delete(id, userId!, userRole!);
       return res.status(204).send();
     } catch (error: unknown) {
       next(error);

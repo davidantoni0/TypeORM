@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzc3OTQwNTc4LCJleHAiOjE3Nzc5NjkzNzh9.FlUxWNcwu59kt3BHEnXQwJj8socjvDhUdJ1aYXoXngQ
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4MDIxODc4LCJleHAiOjE3NzgwNTA2Nzh9.pM1vOrCIFZtiZoEyL_SeD4flhH4EFDUuWkSco9VG9_g
 
 POST http://localhost:3000/api/posts
 Content-Type: application/json

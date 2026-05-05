@@ -1,12 +1,13 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzc3OTQwMTA1LCJleHAiOjE3Nzc5Njg5MDV9.XMQ_6aux3MfiUjxwqNaFrjazcAIh1ZWdA0VqsAi6cV0
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzc4MDIxODc4LCJleHAiOjE3NzgwNTA2Nzh9.pM1vOrCIFZtiZoEyL_SeD4flhH4EFDUuWkSco9VG9_g
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
     "firstName": "Zeca",
     "lastName": "maluco",
-    "email": "zeca.maluco@emaily.com",
+    "email": "zeca.maluco@email.com",
     "phone": "24994142909",
+    "role": "user",
     "password": "aluno1234"
 }
 
@@ -37,6 +38,16 @@ PATCH http://localhost:3000/api/users/2/toggle
 ###
 
 GET http://localhost:3000/api/users/active
+
+###
+
+PATCH  http://localhost:3000/api/users/role/2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "role": "admin"
+}
 
 ###
 
