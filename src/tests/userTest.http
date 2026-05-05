@@ -1,3 +1,4 @@
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzc3OTQwMTA1LCJleHAiOjE3Nzc5Njg5MDV9.XMQ_6aux3MfiUjxwqNaFrjazcAIh1ZWdA0VqsAi6cV0
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
@@ -15,22 +16,23 @@ GET http://localhost:3000/api/users
 
 ###
 
-DELETE http://localhost:3000/api/users/6
+DELETE http://localhost:3000/api/users
 
 ###
 
-PATCH http://localhost:3000/api/users/1
+PATCH http://localhost:3000/api/users
 Content-Type: application/json
+Authorization: Bearer {{authToken}}
 
 {
     "firstName": "Zecão",
     "lastName": "malucão",
-    "email": "zeca.maluco@emailw.com"
+    "email": "zeca.maluco@emailu.com"
 }
 
 ###
 
-PATCH http://localhost:3000/api/users/11/toggle
+PATCH http://localhost:3000/api/users/2/toggle
 
 ###
 

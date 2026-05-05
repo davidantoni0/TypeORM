@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzc3NTkxNzU0LCJleHAiOjE3Nzc2MjA1NTR9.WGSXFWlfKtP8kJWvioN0kjhuPGNumNAdFyTGc9y_02I
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzc3OTQwNTc4LCJleHAiOjE3Nzc5NjkzNzh9.FlUxWNcwu59kt3BHEnXQwJj8socjvDhUdJ1aYXoXngQ
 
 POST http://localhost:3000/api/posts
 Content-Type: application/json
@@ -16,15 +16,16 @@ GET http://localhost:3000/api/posts
 
 ###
 
-PUT http://localhost:3000/api/posts/1
+PUT http://localhost:3000/api/posts/3
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "Zé mané",
+    "title": "Zé manéee",
     "content":"Test"
 }
 
 ###
 
-DELETE http://localhost:3000/api/posts/1
+DELETE http://localhost:3000/api/posts/2
+Authorization: Bearer {{authToken}}
