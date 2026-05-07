@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import cors from "cors";
 import express, { type Application } from "express";
 import { AppDataSource } from "./data-source";
 import { userRoutes } from "./routes/userRoutes";
@@ -7,6 +8,13 @@ import { errorMiddleware } from "./middlewares/errorMiddleware";
 import { authRoutes } from "./routes/authRoutes";
 
 const app: Application = express();
+app.use(
+  cors({
+    origin: process.env.FRONT_URL,
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
